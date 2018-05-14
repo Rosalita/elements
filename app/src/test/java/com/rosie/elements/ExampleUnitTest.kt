@@ -1,7 +1,6 @@
 package com.rosie.elements
 
 import org.junit.Test
-
 import org.junit.Assert.*
 
 /**

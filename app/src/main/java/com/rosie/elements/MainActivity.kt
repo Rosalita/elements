@@ -40,6 +40,9 @@ class MainActivity : AppCompatActivity()  {
             location_text_view.setText("Getting location...")
         }
 
+        val rosie = Person("Rosie")
+        Log.d("TAG", rosie.greet())
+
     }
 
     //define the listener
@@ -51,7 +54,6 @@ class MainActivity : AppCompatActivity()  {
         override fun onProviderEnabled(provider: String) {}
         override fun onProviderDisabled(provider: String) {}
     }
-
 
 
     fun askForLocationPermission(){
@@ -73,6 +75,13 @@ class MainActivity : AppCompatActivity()  {
         } else {
             Log.d("TAG", "location permission is granted")
         }
+    }
 
+    class Person(val name: String){
+        fun greet(): String {
+            val greeting = "ow hai thar my name is "
+            val myname = this.name
+            return(greeting + myname)
+        }
     }
 }
