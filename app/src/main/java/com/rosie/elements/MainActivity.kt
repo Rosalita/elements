@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity()  {
 
         val button = location_button
         button.setOnClickListener{
+
             Log.d("TAG", "clicked")
             askForLocationPermission()
             try {
@@ -34,7 +35,9 @@ class MainActivity : AppCompatActivity()  {
                 locationManager?.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0L, 0f, locationListener);
             } catch(ex: SecurityException) {
                 Log.d("myTag", "Security Exception, no location available");
+                location_text_view.setText("Failed to get location")
             }
+            location_text_view.setText("Getting location...")
         }
 
     }
@@ -42,7 +45,7 @@ class MainActivity : AppCompatActivity()  {
     //define the listener
     private val locationListener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
-            textView.setText("Lon: " + location.longitude + " Lat: " + location.latitude);
+            location_text_view.setText("Lon: " + location.longitude + " Lat: " + location.latitude);
         }
         override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
         override fun onProviderEnabled(provider: String) {}
