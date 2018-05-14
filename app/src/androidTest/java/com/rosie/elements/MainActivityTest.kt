@@ -9,6 +9,7 @@ import android.support.test.espresso.matcher.ViewMatchers.withText
 import android.support.test.rule.ActivityTestRule
 import android.support.test.rule.GrantPermissionRule
 import android.support.test.runner.AndroidJUnit4
+import org.hamcrest.CoreMatchers.not
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -32,6 +33,12 @@ class MainActivityTest {
         onView(withId(R.id.welcome_text))
                 .check(matches(isDisplayed()))
                 .check(matches(withText("Hello")))
+    }
+
+    @Test
+    fun shouldNotDisplayLocationTextOnStartUp(){
+        onView(withId(R.id.location_text_view))
+                .check(matches(not(isDisplayed())))
     }
 
     @Test
